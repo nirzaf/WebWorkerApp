@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -53,7 +52,7 @@ namespace WebWorkerApp
     {
         public SampleJob()
         {
-            Timer timer = new Timer(HandleTick);
+            Timer timer = new(HandleTick);
             timer.Change(TimeSpan.Zero, TimeSpan.FromSeconds(5));
         }
 
@@ -75,11 +74,7 @@ namespace WebWorkerApp
         protected override Assembly Load(AssemblyName assemblyName)
         {
             var assemblyPath = _resolver.ResolveAssemblyToPath(assemblyName);
-            if (assemblyPath != null)
-            {
-                return LoadFromAssemblyPath(assemblyPath);
-            }
-            return null;
+            return assemblyPath != null ? LoadFromAssemblyPath(assemblyPath) : null;
         }
     }
 }
