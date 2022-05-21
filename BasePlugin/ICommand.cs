@@ -6,7 +6,6 @@ namespace BasePlugin
     {
         string Name { get; }
         string Description { get; }
-
         string Execute();
     }
 }
