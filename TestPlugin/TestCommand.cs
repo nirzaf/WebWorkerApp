@@ -5,10 +5,10 @@ namespace TestPlugin
 {
     public class TestCommand : ICommand
     {
-        private static InternalIdentifier s_identifier;
+        private static readonly InternalIdentifier SIdentifier;
         static TestCommand()
         {
-            s_identifier = new InternalIdentifier()
+            SIdentifier = new InternalIdentifier()
             {
                 Created = DateTime.Now
             };
@@ -18,7 +18,7 @@ namespace TestPlugin
         public string Description => "Dummy command for testing purpose.";
         public string Execute()
         {
-            Console.WriteLine($"Hello from plugin {s_identifier}!");
+            Console.WriteLine($"Hello from plugin {SIdentifier}!");
             return "Hello world!";
         }
     }
